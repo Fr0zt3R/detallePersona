@@ -4,11 +4,22 @@ import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import registromedico.idit.com.detallepersonas.Adapter.MyAdapter;
+import registromedico.idit.com.detallepersonas.Models.titleChild;
+import registromedico.idit.com.detallepersonas.Models.titleCreator;
+import registromedico.idit.com.detallepersonas.Models.titleParent;
 import registromedico.idit.com.detallepersonas.dummy.DummyContent;
 
 /**
@@ -33,6 +44,7 @@ public class PersonaDetailFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
+    
     public PersonaDetailFragment() {
     }
 
@@ -72,6 +84,34 @@ public class PersonaDetailFragment extends Fragment {
 
         }
 
+        //Agregamos los RecyclerView
+        //1. Obtenemos referencia a recyclerView
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.myRecyclerview);
+        // 2. set layoutManger
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+        MyAdapter adapter =  new MyAdapter(getActivity(), initData());
+        adapter.setParentClickableViewAnimationDefaultDuration();
+        adapter.setParentAndIconExpandOnClick(true);
+
+
+        recyclerView.setAdapter(adapter);
+
         return rootView;
+    }
+
+    private List<ParentObject> initData() {
+        titleCreator _titleCreator = titleCreator.get(getActivity());
+        List<titleParent> titles = _titleCreator.getAll();
+        List<ParentObject> parentObject = new ArrayList<>();
+        for (titleParent title:titles)
+        {
+            List<Object> childList = new ArrayList<>();
+            childList.add(new titleChild("Agregar", "Detalles "));
+            title.setChildObjectList(childList);
+            parentObject.add(title);
+        }
+        return parentObject;
     }
 }
