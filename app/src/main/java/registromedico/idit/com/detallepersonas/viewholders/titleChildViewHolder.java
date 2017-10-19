@@ -22,4 +22,5 @@ public class titleChildViewHolder extends ChildViewHolder {
         option2 = (TextView) itemView.findViewById(R.id.option2);
 
     }
+
 }

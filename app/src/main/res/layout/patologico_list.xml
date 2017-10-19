@@ -4,29 +4,35 @@
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/holo_blue_dark"
-    >
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#1565C0"
-        >
+        android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/parentTitle"
-            android:padding="16dp"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ImageButton
-            android:id="@+id/expandArrow"
+            android:layout_height="wrap_content"
+            android:id="@+id/patologico"
+            android:text="Padecimientos patologicos"
+            />
+
+        <TextView
             android:visibility="gone"
-            android:layout_alignParentRight="true"
-            android:layout_margin="8dp"
-            android:src="@android:drawable/arrow_down_float"
+            android:id="@+id/option1"
+            android:padding="8dp"
+            android:text="Opcion 1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <TextView
+            android:visibility="gone"
+            android:layout_below="@id/option1"
+            android:id="@+id/option2"
+            android:padding="8dp"
+            android:text="Opcion 2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
 
     </RelativeLayout>
 

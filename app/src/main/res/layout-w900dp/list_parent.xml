@@ -5,12 +5,14 @@
     android:layout_marginRight="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/holo_blue_dark"
+
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#1565C0"
+        >
         <TextView
             android:id="@+id/parentTitle"
             android:padding="16dp"
@@ -19,7 +21,7 @@
             android:layout_height="wrap_content" />
         <ImageButton
             android:id="@+id/expandArrow"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_alignParentRight="true"
             android:layout_margin="8dp"
             android:src="@android:drawable/arrow_down_float"
