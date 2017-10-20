@@ -4,26 +4,25 @@
     style="?android:attr/textAppearanceLarge"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:isScrollContainer="true"
+    android:orientation="horizontal"
     android:padding="2dp"
     android:textIsSelectable="true"
-    tools:context="registromedico.idit.com.detallepersonas.PersonaDetailFragment"
     android:weightSum="1"
-    android:orientation="horizontal"
-    android:isScrollContainer="true">
+    tools:context="registromedico.idit.com.detallepersonas.PersonaDetailFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:background="@drawable/img_profile"
             android:gravity="center"
-            android:orientation="horizontal"
 
-            android:layout_weight="0.89">
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="100dp"
@@ -154,43 +153,17 @@
                 </LinearLayout>
             </LinearLayout>
 
+            </LinearLayout>
 
 
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@android:color/black"
-            ></LinearLayout>
+            <ExpandableListView
+                android:id="@+id/lvExp"
+                android:layout_width="match_parent"
+                android:layout_height="648dp"
+                />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@android:color/holo_red_dark"
-            ></LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@android:color/darker_gray"
-            ></LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@android:color/holo_red_dark"
-            ></LinearLayout>
-
-
-
-
-    </LinearLayout>
-
-
-
-
-
+       </LinearLayout>
 
 </ScrollView>
 

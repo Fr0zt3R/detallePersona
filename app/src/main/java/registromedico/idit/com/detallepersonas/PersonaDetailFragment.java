@@ -7,8 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import registromedico.idit.com.detallepersonas.Adapter.ExpandableListAdapter;
 import registromedico.idit.com.detallepersonas.dummy.DummyContent;
 
 /**
@@ -36,6 +42,11 @@ public class PersonaDetailFragment extends Fragment {
     public PersonaDetailFragment() {
     }
 
+    ExpandableListAdapter listAdapter;
+    ExpandableListView expListView;
+    List<String> listDataHeader;
+    HashMap<String, List<String>> listDataChild;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,13 +57,9 @@ public class PersonaDetailFragment extends Fragment {
             // to load content from a content provider.
             mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
 
-            Activity activity = this.getActivity();
-            //Barra en caso de que la posicion de la tableta sea hotizontal
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
-            if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.nombre + " " + mItem.apellido );
-            }
         }
+
+
     }
 
     @Override
@@ -72,6 +79,89 @@ public class PersonaDetailFragment extends Fragment {
 
         }
 
+        // Agregamos los archivos
+        // get the listview
+        expListView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
+
+        // preparing list data
+        prepareListData();
+
+        listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
+
+        // setting list adapter
+        expListView.setAdapter(listAdapter);
+
+
+
         return rootView;
+    }
+
+    private void prepareListData() {
+        listDataHeader = new ArrayList<String>();
+        listDataChild = new HashMap<String, List<String>>();
+
+        // Adding child data
+        listDataHeader.add("Antecedentes Patologicos");
+        listDataHeader.add("Historia Familiar");
+        listDataHeader.add("Hábitos de tabaco ");
+        listDataHeader.add("Hábitos de alcohol ");
+        listDataHeader.add("Hábitos de droga ");
+        listDataHeader.add("Hábitos alimenticios y deporte ");
+        listDataHeader.add("Antecedentes personales y padecimiento actual ");
+        listDataHeader.add("Padece o ha padecido: ");
+
+
+        // Adding child data
+        List<String> Antecedentes = new ArrayList<String>();
+        Antecedentes.add("Diabetes");
+        Antecedentes.add("Enfermedad Riñones");
+        Antecedentes.add("Enfermedad Pulmones");
+        Antecedentes.add("Presión arterial Alta");
+
+
+        List<String> Historia = new ArrayList<String>();
+        Historia.add("Datos del Padre");
+        Historia.add(" 70 años, Saludable");
+        Historia.add("Datos de la madre");
+        Historia.add("65 años,  Saludable");
+        Historia.add("Red 2");
+        Historia.add("The Wolverine");
+
+        List<String> tabaco = new ArrayList<String>();
+        tabaco.add("No fuma Actualmente");
+        tabaco.add("No ha fumado anteriormente");
+
+        List<String> alcohol = new ArrayList<String>();
+        alcohol.add("No bebe");
+
+        List<String> droga = new ArrayList<String>();
+        droga.add("10 Enero 2005 Marihuana Ocasional");
+        droga.add("Ha pertenecido a un instituto de rehabilitación");
+
+        List<String> habitos = new ArrayList<String>();
+        habitos.add("Ha disminuido 5 Kg en el ultimo año");
+        habitos.add("Practica Crossfit 3 dias a la semana");
+
+        List<String> personales = new ArrayList<String>();
+        personales.add("No padece actualmente una enfermedad");
+        personales.add("No ha consumido medicamento en las ultimas 24 horas");
+
+
+        List<String> padecimientos = new ArrayList<String>();
+        padecimientos.add("Infarto");
+        padecimientos.add("Ulcera en estomago");
+        padecimientos.add("Ha estado hospitalizado");
+
+
+        listDataChild.put(listDataHeader.get(0), Antecedentes); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), Historia);
+        listDataChild.put(listDataHeader.get(2), tabaco);
+        listDataChild.put(listDataHeader.get(3), alcohol);
+        listDataChild.put(listDataHeader.get(4), droga);
+        listDataChild.put(listDataHeader.get(5), habitos);
+        listDataChild.put(listDataHeader.get(6), personales);
+        listDataChild.put(listDataHeader.get(7), padecimientos);
+
+
     }
 }
