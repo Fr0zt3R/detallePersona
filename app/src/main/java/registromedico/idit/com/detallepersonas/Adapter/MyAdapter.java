@@ -1,6 +1,7 @@
 package registromedico.idit.com.detallepersonas.Adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,16 +25,17 @@ import registromedico.idit.com.detallepersonas.viewholders.titleParentViewHolder
 public class MyAdapter extends ExpandableRecyclerAdapter<titleParentViewHolder, titleChildViewHolder>{
 
     LayoutInflater inflater;
+    ViewGroup VG;
     int viewType = 0;
-    final int ANT_PATOLOGICO = 0;
-    final int HISTORIA = 1;
-    final int TABACO = 2;
-    final int ALCOHOL = 3;
-    final int DROGAS = 4;
-    final int HABITOS = 5;
-    final int ANT_PERSONALES = 6;
-    final int PADECIMIENTOS = 7;
-    final int PADECIMIENTOS_MUJER = 8;
+    final int ANT_PATOLOGICO = 1;
+    final int HISTORIA = 2;
+    final int TABACO = 3;
+    final int ALCOHOL = 4;
+    final int DROGAS = 5;
+    final int HABITOS = 6;
+    final int ANT_PERSONALES = 7;
+    final int PADECIMIENTOS = 8;
+    final int PADECIMIENTOS_MUJER = 9;
 
 
 
@@ -52,42 +54,9 @@ public class MyAdapter extends ExpandableRecyclerAdapter<titleParentViewHolder, 
     @Override
     public titleChildViewHolder onCreateChildViewHolder(ViewGroup viewGroup) {
        //Agregar Switch para los diferentes layouts
-        View view;
 
-        int a = viewGroup.getChildCount();
-        switch (a){
-            case ANT_PATOLOGICO:
-                 view = inflater.inflate(R.layout.patologico_list, viewGroup, false);
-                break;
-            case HISTORIA:
-                view = inflater.inflate(R.layout.historia_list, viewGroup, false);
-                break;
-            case TABACO:
-                view = inflater.inflate(R.layout.tabaco_list, viewGroup, false);
-                break;
-            case ALCOHOL:
-                view = inflater.inflate(R.layout.alcohol_list, viewGroup, false);
-                break;
-            case DROGAS:
-                view = inflater.inflate(R.layout.drogas_list, viewGroup, false);
-                break;
-            case HABITOS:
-                view = inflater.inflate(R.layout.habitos_list, viewGroup, false);
-                break;
-            case ANT_PERSONALES:
-                view = inflater.inflate(R.layout.ant_personales_list, viewGroup, false);
-                break;
-            case PADECIMIENTOS:
-                view = inflater.inflate(R.layout.padecimientos_list, viewGroup, false);
-                break;
-            case PADECIMIENTOS_MUJER:
-                view = inflater.inflate(R.layout.padecimientos_mujer_list, viewGroup, false);
-                break;
-            default:
-                 view = inflater.inflate(R.layout.hijo, viewGroup, false);
-        }
-
-
+        VG = viewGroup;
+        View view = inflater.inflate(R.layout.hijo, viewGroup, false);
         return new titleChildViewHolder(view);
     }
 
@@ -99,8 +68,12 @@ public class MyAdapter extends ExpandableRecyclerAdapter<titleParentViewHolder, 
 
     @Override
     public void onBindChildViewHolder(titleChildViewHolder titleChildViewHolder, int i, Object o) {
+
         titleChild title = (titleChild) o;
 
+        //titleChildViewHolder.view =inflater.inflate(title.cv,this.VG,false);
+        //titleChildViewHolder = new titleChildViewHolder(inflater.inflate(title.cv,VG,false));
+        //titleChildViewHolder.cardView = (CardView)inflater.inflate(title.cv,this.VG,false);
         titleChildViewHolder.option1.setText(title.getOption1());
         titleChildViewHolder.option2.setText(title.getOption2());
     }

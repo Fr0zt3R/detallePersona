@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -105,12 +106,14 @@ public class PersonaDetailFragment extends Fragment {
         titleCreator _titleCreator = titleCreator.get(getActivity());
         List<titleParent> titles = _titleCreator.getAll();
         List<ParentObject> parentObject = new ArrayList<>();
+        int i = 1;
         for (titleParent title:titles)
         {
             List<Object> childList = new ArrayList<>();
-            childList.add(new titleChild("Agregar", "Detalles "));
+            childList.add(new titleChild(String.format("%d",i), "Detalles\nMas detalles\nAun mas detalles ",  R.layout.drogas_list));
             title.setChildObjectList(childList);
             parentObject.add(title);
+            i++;
         }
         return parentObject;
     }

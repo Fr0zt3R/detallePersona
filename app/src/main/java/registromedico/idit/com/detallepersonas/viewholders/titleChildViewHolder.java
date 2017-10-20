@@ -1,5 +1,6 @@
 package registromedico.idit.com.detallepersonas.viewholders;
 
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,12 +16,19 @@ import registromedico.idit.com.detallepersonas.R;
 public class titleChildViewHolder extends ChildViewHolder {
 
     public TextView option1,option2;
+    public CardView cardView;
+    public View view;
 
     public titleChildViewHolder(View itemView) {
         super(itemView);
+        this.view =itemView;
+        cardView = (CardView) itemView.findViewById(R.id.cardV);
         option1 = (TextView) itemView.findViewById(R.id.option1);
         option2 = (TextView) itemView.findViewById(R.id.option2);
 
+
     }
+
+
 
 }
